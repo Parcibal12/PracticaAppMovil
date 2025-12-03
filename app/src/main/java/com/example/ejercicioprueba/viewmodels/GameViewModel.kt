@@ -1,14 +1,13 @@
 package com.example.ejercicioprueba.viewmodels
 
 
-import androidx.compose.runtime.currentRecomposeScope
 import androidx.lifecycle.ViewModel
 import com.example.ejercicioprueba.data.Game
-import com.example.ejercicioprueba.features.game.GameState
-import com.example.ejercicioprueba.features.game.GameViewState
-import com.example.ejercicioprueba.features.game.LoseState
-import com.example.ejercicioprueba.features.game.PlayingState
-import com.example.ejercicioprueba.features.game.WinState
+import com.example.ejercicioprueba.feature.game.GameState
+import com.example.ejercicioprueba.feature.game.GameViewState
+import com.example.ejercicioprueba.feature.game.LoseState
+import com.example.ejercicioprueba.feature.game.PlayingState
+import com.example.ejercicioprueba.feature.game.WinState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -16,9 +15,7 @@ import kotlinx.coroutines.flow.update
 
 class GameViewModel: ViewModel() {
 
-    private val _uiState = MutableStateFlow(
-        value = GameViewState()
-    )
+    private val _uiState = MutableStateFlow(GameViewState())
 
     val uiState: StateFlow<GameViewState> = _uiState.asStateFlow()
 
@@ -27,7 +24,7 @@ class GameViewModel: ViewModel() {
             _uiState.update { currentState ->
 
                 val currentGuesses = currentState.currentGuesses + 1
-                var gameState = currentState.gameState
+                var gameState: GameState = currentState.gameState
 
                 if(currentState.gameConfiguration.targetNumber == number.toInt()) {
                     gameState = WinState

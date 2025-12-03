@@ -14,7 +14,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.ejercicioprueba.features.game.GameViewState
+import com.example.ejercicioprueba.feature.game.GameViewState
 import com.example.ejercicioprueba.viewmodels.GameViewModel
 
 @Composable
